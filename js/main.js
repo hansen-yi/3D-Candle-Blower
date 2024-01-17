@@ -1,7 +1,9 @@
 // import { degToRad } from 'three/src/math/MathUtils.js';
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { TrackballControls } from '/node_modules/three/examples/jsm/controls/TrackballControls.js';
-import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls';
+// import THREE from 'https://cdn.skypack.dev/three';
+// import { TrackballControls } from 'https://cdn.skypack.dev/three-trackballcontrols-ts';
+// import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls';
 // import { GUI } from 'dat.gui';
 import { GUI } from "https://cdn.skypack.dev/dat.gui";
 // import vertexShader from '../shaders/vert.glsl'
