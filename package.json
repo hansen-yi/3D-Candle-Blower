@@ -1,5 +1,7 @@
 {
+  "homepage": "https://hansen-yi.github.io/3D-Candle-Blower/",
   "scripts": {
+    "predeploy" : "npm run build",
     "deploy" : "gh-pages -d dist"
   },
   "dependencies": {
