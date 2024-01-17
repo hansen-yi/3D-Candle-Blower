@@ -4,8 +4,8 @@ import { TrackballControls } from '/node_modules/three/examples/jsm/controls/Tra
 // import THREE from 'https://cdn.skypack.dev/three';
 // import { TrackballControls } from 'https://cdn.skypack.dev/three-trackballcontrols-ts';
 // import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls';
-// import { GUI } from 'dat.gui';
-import { GUI } from "https://cdn.skypack.dev/dat.gui";
+import { GUI } from 'dat.gui';
+// import { GUI } from "https://cdn.skypack.dev/dat.gui";
 // import vertexShader from '../shaders/vert.glsl'
 
 let time = 0;
