@@ -1,4 +1,4 @@
-import { degToRad } from 'three/src/math/MathUtils.js';
+// import { degToRad } from 'three/src/math/MathUtils.js';
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { TrackballControls } from '/node_modules/three/examples/jsm/controls/TrackballControls.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls';
@@ -803,7 +803,8 @@ const rendering = function() {
 
     // scene.rotation.z -= 0.005;
     // scene.rotation.x -= 0.01;
-    scene.rotation.x = degToRad(15);
+    // scene.rotation.x = degToRad(15);
+    scene.rotation.x = Math.PI / 180. * 15.;
     renderer.render(scene, camera);
     // console.log(prevNumCandles);
     // console.log(candles);
