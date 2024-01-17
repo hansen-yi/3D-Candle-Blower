@@ -2,7 +2,8 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { TrackballControls } from '/node_modules/three/examples/jsm/controls/TrackballControls.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls';
-import { GUI } from 'dat.gui';
+// import { GUI } from 'dat.gui';
+import { GUI } from "https://cdn.skypack.dev/dat.gui";
 // import vertexShader from '../shaders/vert.glsl'
 
 let time = 0;
