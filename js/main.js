@@ -800,7 +800,7 @@ const rendering = function() {
         console.log("blowing");
         blowCount++;
     }
-    if (maxFreq == 0 && (blowCount != 0 || talkCount != 0)) {
+    if (maxAmp == 128 && (blowCount != 0 || talkCount != 0)) {
         // if (blowCount < 10)
         if (talkCount > blowCount) {
             // if (talkCount < 10) {
