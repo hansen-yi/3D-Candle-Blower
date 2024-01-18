@@ -739,6 +739,10 @@ const soundData = new Uint8Array(analyser.frequencyBinCount);
 const freqData = new Uint8Array(analyser.frequencyBinCount);
 let soundCount = 0;
 
+let blowCount = 0;
+let talkCount = 0;
+let interval = 0;
+
 const rendering = function() {
     // analyser.getFloatTimeDomainData(pcm);
     // analyser.getFloatFrequencyData(pcm);
@@ -768,21 +772,63 @@ const rendering = function() {
         // if (maxAmp > 140 && soundLvl > 10 && maxFreq > 150) {
             // console.log("talking");
         // } else if (maxAmp < 130 && soundLvl > 1.5) {
-        if (maxAmp > 128 && maxAmp <= 136 && soundLvl > 5 && soundLvl < 15 && maxFreq > 100 && maxFreq < 150) {
-            // console.log("blow");
-            thresholds[i] = Math.max(0, thresholds.at(i) - 1);
-            if (thresholds.at(i) == 0) {
-                scene.remove(fires.at(i));
-            }
-            // console.log(thresholds);
-        }
+        // if (maxAmp > 128 && maxAmp <= 136 && soundLvl > 5 && soundLvl < 15 && maxFreq > 100 && maxFreq < 150) {
+        //     // console.log("blow");
+        //     thresholds[i] = Math.max(0, thresholds.at(i) - 1);
+        //     if (thresholds.at(i) == 0) {
+        //         scene.remove(fires.at(i));
+        //     }
+        //     // console.log(thresholds);
+        // }
         wickUniforms.at(i).burnPos.value -= 0.00005 * Math.random() * Math.random();
     }
-    if (maxAmp > 128 && maxAmp <= 136 && soundLvl > 5 && soundLvl < 15 && maxFreq > 100 && maxFreq < 150) { //1.5
-        console.log("blow");
-    }
-    else if (maxAmp > 140 && soundLvl > 10 && maxFreq > 150) { //10
+    // if (maxAmp > 128 && maxAmp <= 136 && soundLvl > 5 && soundLvl < 15 && maxFreq > 100 && maxFreq < 150) { //1.5
+    //     console.log("blow");
+    //     blowCount++;
+    // }
+    // else if (maxAmp > 140 && soundLvl > 10 && maxFreq > 150) { //10
+    //     console.log("talking");
+    //     talkCount++;
+    // }
+    // if (maxAmp > 140) {
+    if (maxAmp > 140) {
         console.log("talking");
+        talkCount++;
+    } else if (maxAmp > 128 && maxAmp < 132 && maxFreq > 100 && soundLvl > 5) {
+        console.log("blowing");
+        blowCount++;
+    }
+    if (maxFreq == 0 && (blowCount != 0 || talkCount != 0)) {
+        // if (blowCount < 10)
+        if (talkCount > blowCount) {
+            // if (talkCount < 10) {
+            //     talkCount = 0;
+            //     blowCount = 0;
+            // }
+            console.log('talkcount:', talkCount, '; blowcount:', blowCount);
+            talkCount = 0;
+            blowCount = 0;
+            
+        } else if (blowCount > talkCount) {
+            if (blowCount < 10) {
+                talkCount = 0;
+                blowCount = 0;
+            }
+            //do action
+            for (let i = 0; i < fires.length; i++) {
+                if (thresholds.at(i) == 0) {
+                    continue;
+                }
+                thresholds[i] = Math.max(0, thresholds.at(i) - blowCount);
+                if (thresholds.at(i) == 0) {
+                    scene.remove(fires.at(i));
+                }
+            }
+            console.log("blow detected, blowCount:", blowCount, 'talkCount: ', talkCount);
+            talkCount = 0;
+            blowCount = 0;
+        }
+        
     }
     // console.log(thresholds);
     // if (maxAmp > 135 && soundLvl > 20) {
