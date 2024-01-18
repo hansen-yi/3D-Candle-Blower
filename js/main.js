@@ -764,6 +764,7 @@ const rendering = function() {
     // console.log(maxAmp); 
     const maxFreq = Math.max(...freqData);
     // console.log(maxFreq); 
+    console.log("soundLvl: ", soundLvl, "; maxAmp: ", maxAmp, "; maxFreq: ", maxFreq);
     for (let i = 0; i < fires.length; i++) {
         if (thresholds.at(i) == 0) {
             continue;
@@ -794,7 +795,8 @@ const rendering = function() {
     if (maxAmp > 140) {
         console.log("talking");
         talkCount++;
-    } else if (maxAmp > 128 && maxAmp < 132 && maxFreq > 100 && soundLvl > 5) {
+    // } else if (maxAmp > 128 && maxAmp < 132 && maxFreq > 100 && soundLvl > 5) {
+    } else if (maxAmp > 130 && maxFreq > 120) {
         console.log("blowing");
         blowCount++;
     }
@@ -810,7 +812,7 @@ const rendering = function() {
             blowCount = 0;
             
         } else if (blowCount > talkCount) {
-            if (blowCount < 10) {
+            if (blowCount < 10 || blowCount > 100) {
                 talkCount = 0;
                 blowCount = 0;
             }

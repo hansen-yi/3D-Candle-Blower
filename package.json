@@ -1,6 +1,8 @@
 {
   "homepage": "https://hansen-yi.github.io/3D-Candle-Blower/",
   "scripts": {
+    "dev" : "vite --host",
+    "build" : "vite build",
     "deploy" : "gh-pages -d dist"
   },
   "dependencies": {
