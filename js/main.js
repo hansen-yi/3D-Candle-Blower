@@ -733,7 +733,7 @@ const audioContext = new AudioContext();
 const source = audioContext.createMediaStreamSource(stream);
 const analyser = audioContext.createAnalyser();
 source.connect(analyser);
-analyser.fftSize = 2048 * 4; //2048 * 16
+analyser.fftSize = 2048; //2048 * 16
 const pcm = new Float32Array(analyser.fftSize / 2);
 const soundData = new Uint8Array(analyser.frequencyBinCount);
 const freqData = new Uint8Array(analyser.frequencyBinCount);
@@ -764,7 +764,7 @@ const rendering = function() {
     // console.log(maxAmp); 
     const maxFreq = Math.max(...freqData);
     // console.log(maxFreq); 
-    console.log("soundLvl: ", soundLvl, "; maxAmp: ", maxAmp, "; maxFreq: ", maxFreq);
+    // console.log("soundLvl: ", soundLvl, "; maxAmp: ", maxAmp, "; maxFreq: ", maxFreq);
     for (let i = 0; i < fires.length; i++) {
         if (thresholds.at(i) == 0) {
             continue;
