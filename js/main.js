@@ -725,6 +725,7 @@ function reset() {
     controller.reset();
     regenerateCake();
     updateCandles();
+    wickUniforms.length = 0;
     gui.updateDisplay();
 }
 
